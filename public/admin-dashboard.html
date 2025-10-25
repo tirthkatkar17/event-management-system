@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Event Manager</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Event Manager Admin</div>
+        <nav>
+            <a href="/index.html">View Public Site</a>
+            <button onclick="logout()">Logout</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Admin Dashboard</h1>
+        
+        <button class="btn primary" onclick="document.getElementById('create-event-modal').style.display='block'">+ Create New Event</button>
+        
+        <h2 class="section-title">Manage Events</h2>
+        <div id="admin-events-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Max Attendees</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-event-table-body">
+                    </tbody>
+            </table>
+        </div>
+
+        <div id="create-event-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="document.getElementById('create-event-modal').style.display='none'">&times;</span>
+                <h2>Create New Event</h2>
+                <form id="create-event-form">
+                    <label>Event Name</label>
+                    <input type="text" name="eventName" required>
+
+                    <label>Department</label>
+                    <select name="department" required>
+                        <option value="">Select Department</option>
+                        <option value="CS">Computer Science</option>
+                        <option value="Mech">Mechanical</option>
+                        </select>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>Date (YYYY-MM-DD)</label>
+                            <input type="date" name="date" required>
+                        </div>
+                        <div class="col">
+                            <label>Time</label>
+                            <input type="time" name="time" required>
+                        </div>
+                    </div>
+
+                    <label>Location</label>
+                    <input type="text" name="location" required>
+
+                    <label>Fee (e.g., 299, 0 for Free)</label>
+                    <input type="number" name="fee" step="0.01" value="0">
+                    
+                    <label>Maximum Attendees</label>
+                    <input type="number" name="maxAttendees">
+
+                    <label>Description</label>
+                    <textarea name="description" rows="4"></textarea>
+
+                    <button type="submit" class="btn primary">Create Event</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="registration-modal" class="modal">
+            <div class="modal-content large">
+                <span class="close-btn" onclick="document.getElementById('registration-modal').style.display='none'">&times;</span>
+                <div id="registered-students-list">
+                    </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/admin.js"></script>
+    <script>
+        // Simple client-side logout
+        function logout() {
+            // Note: A proper logout API call is needed to destroy the session on the backend
+            fetch('/api/auth/logout', { method: 'POST' }).finally(() => {
+                window.location.href = '/login.html';
+            });
+        }
+    </script>
+</body>
+</html>

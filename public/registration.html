@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">KIT's College of Engineering</div>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <div class="card">
+            <h2>Register for an Account</h2>
+            <form id="student-registration-form">
+                
+                <label for="reg-fullName">Full Name *</label>
+                <input type="text" id="reg-fullName" name="fullName" placeholder="Enter your full name" required>
+
+                <label for="reg-email">Email Address *</label>
+                <input type="email" id="reg-email" name="email" placeholder="Enter your email address" required>
+                
+                <label for="reg-phone">Phone Number *</label>
+                <input type="text" id="reg-phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="reg-college">College Name *</label>
+                <input type="text" id="reg-college" name="college" placeholder="Enter your college name" required>
+
+                <label for="reg-password">Password *</label>
+                <input type="password" id="reg-password" name="password" required>
+                
+                <button type="submit" class="btn primary">Register Account</button>
+                <p id="registration-message" class="error-message"></p>
+            </form>
+            <p style="margin-top: 15px;">Already have an account? <a href="/login.html">Log in here</a></p>
+        </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/registration.js"></script>
+</body>
+</html>
